@@ -15,7 +15,7 @@ HOSI is an open educational project focused on the human mind, brain, behavior, 
 
 ## Current development status
 
-This repository is the canonical public source repository for the HOSI project. It currently contains foundational documents and curriculum-development specifications. Production deployment of a WordPress campus, LMS, Atlas AI, certification engine, and peer-review infrastructure is still future work.
+This repository is the canonical public source repository for the HOSI project. It currently contains foundational documents, curriculum-development specifications, web and Android scaffolds, and AI/Atlas architecture. Production deployment, independent academic review, final source verification, and release testing remain active work.
 
 ## Repository map
 
@@ -24,8 +24,15 @@ This repository is the canonical public source repository for the HOSI project. 
 - `courses/HOSI-101/` — flagship course materials
 - `founders-atlas/` — Founder's Cognitive Biography / Human Operating System Atlas
 - `research/` — evidence library standards and research workflow
-- `platform/` — WordPress/LMS/AI architecture
+- `platform/` — WordPress/LMS/AI architecture and web/app prototypes
 - `branding/` — visual identity and asset specifications
+- `.github/` — automation and repository instructions
+- `AGENTS.md` — cross-agent development rules
+- `LLM_CONTINUATION_PLAYBOOK.md` — instructions for ChatGPT, Copilot, Grok, and Perplexity
+
+## Continuing HOSI with another AI
+
+Start with `LLM_CONTINUATION_PLAYBOOK.md`. It contains the canonical handoff prompt, GitHub workflow, platform rules, medical/evidence guardrails, and model-specific instructions.
 
 ## Educational scope
 
