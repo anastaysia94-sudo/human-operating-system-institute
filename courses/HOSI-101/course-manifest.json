@@ -1,0 +1,9 @@
+{
+  "course": "HOSI-101",
+  "title": "Understanding the Human Operating System",
+  "lessons": 20,
+  "status": "development draft — source verification, independent review, assessment validation, and accessibility review required before public instructional release",
+  "student_textbook": "student-textbook-lessons-01-20.md",
+  "teacher_guide": "teacher-guide-answer-key-lessons-01-20.md",
+  "homework": "homework-lessons-01-20.md"
+}
