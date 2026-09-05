@@ -4,47 +4,47 @@
 
 ## Honest completion estimate
 
-**12% overall — planning and architecture are substantially ahead of implementation.**
+**22% overall — architecture is mature and the first curriculum/platform scaffolds are now present; production validation remains substantial.**
 
-The percentage is a weighted project-management estimate, not an accreditation, scientific, or software-quality metric.
+This percentage is a weighted project-management estimate, not an accreditation, scientific, or software-quality metric.
 
-| Workstream | Current estimate |
+| Workstream | Estimate |
 |---|---:|
-| Vision / requirements | 75% |
-| Academic architecture | 35% |
-| Curriculum production | 8% |
-| Evidence library | 3% |
-| Founder's Atlas | 15% |
-| Student Atlas | 2% |
-| Atlas AI | 1% |
-| WordPress / LMS | 1% |
-| GitHub content architecture | 15% |
+| Vision / requirements | 80% |
+| Academic architecture | 45% |
+| Curriculum production | 15% |
+| Evidence library | 5% |
+| Founder's Atlas | 18% |
+| Student Atlas | 4% |
+| Atlas AI | 2% |
+| WordPress / LMS | 4% |
+| GitHub content architecture | 30% |
 | Branding / visual system | 6% |
-| Governance / academic integrity | 8% |
-| Pilot / QA / accreditation | 0% |
+| Governance / academic integrity | 10% |
+| Android client | 4% |
+| QA / pilot / accreditation | 0% |
 
-## Completed in this phase
+## Recent work
 
-- Public GitHub repository established.
-- Foundational Constitution, Master Backlog, and Academic Catalog drafted in the project workspace and transfer package.
-- HOSI-101 structure established: 20 modules / 200 lessons planned.
-- Lessons 1–20 have substantive development manuscripts, student textbook material, homework material, and instructor-answer-key framework in the downloadable development packet.
-- Adaptive study-path concept established for Bipolar I, Bipolar II, ADHD presentations, OCD, PTSD/trauma, brain injury, and meaningful combinations.
-- Founder's Cognitive Biography / Human Operating System Atlas architecture established.
-- Evidence-rating and editorial principles established.
+- Added implementation-oriented WordPress.com launch guidance.
+- Added an Android Kotlin/Compose starter architecture and Gradle configuration.
+- Added a mobile-first web campus prototype.
+- Added GitHub Actions Android build scaffold.
+- Mapped HOSI-101 through Lesson 200.
+- Added GitHub Issues for curriculum, research library, Atlas, WordPress/LMS, and QA/public beta.
 
-## Not yet complete
+## Still incomplete
 
-- Independent subject-matter review of lessons.
-- Source-by-source medical evidence verification and updating.
-- Full 200-lesson production and assessment banks.
-- Production WordPress LMS.
-- Student authentication and persistent Atlas.
-- Atlas AI implementation and privacy/security testing.
-- Formal peer-review board and academic governance.
-- External accreditation/authorization.
-- Public beta and learner QA.
+- Lessons 81–200 need full researched prose, not only specifications.
+- Every medical/clinical claim needs source-by-source verification.
+- Independent subject-matter, lived-experience, accessibility, and safety review is not complete.
+- WordPress site is not connected or deployed from this repository.
+- Plugin-based LMS is not installed; the free WordPress.com plan does not support plugin installation.
+- Atlas persistence/backend is not implemented.
+- Atlas AI is not implemented or red-teamed.
+- Android app is a starter scaffold, not a signed production release.
+- Formal accreditation/authorization does not exist.
 
-## Definition of 100%
+## 100% gate
 
-HOSI is not considered 100% complete merely because all planned pages exist. A future 100% release requires the applicable content, technical, accessibility, evidence, privacy, security, governance, and QA criteria to be satisfied and documented.
+See `governance/100_PERCENT_DEFINITION_OF_DONE.md`. Generation of files is not the definition of completion.
