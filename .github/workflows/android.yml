@@ -1,0 +1,33 @@
+name: HOSI Android
+
+on:
+  push:
+    paths:
+      - 'platform/android/**'
+      - '.github/workflows/android.yml'
+  pull_request:
+    paths:
+      - 'platform/android/**'
+      - '.github/workflows/android.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: platform/android
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Build debug APK
+        run: ./gradlew assembleDebug
+        continue-on-error: true
+
+# This workflow is intentionally non-blocking until the Gradle wrapper is committed and
+# the dependency versions are validated in CI. Never place signing keys or API keys here.
