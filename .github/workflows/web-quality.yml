@@ -1,0 +1,32 @@
+name: HOSI Web Quality
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'platform/web/**'
+      - '.github/workflows/web-quality.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify educational discovery and safety contract
+        run: |
+          FILE=platform/web/mvp/index.html
+          test -s "$FILE"
+          grep -q 'application/ld+json' "$FILE"
+          grep -q 'EducationalOrganization' "$FILE"
+          grep -q 'Publication status matters' "$FILE"
+          grep -q 'Skip to main content' "$FILE"
+          grep -q 'Diagnoses are maps, not identities' "$FILE"
+          grep -q 'not all 300 planned lessons are finished' "$FILE"
+          grep -q 'Not a medical practice' "$FILE"
+          grep -q 'data-state="prototype"' "$FILE"
+          echo 'HOSI web quality contract verified.'
