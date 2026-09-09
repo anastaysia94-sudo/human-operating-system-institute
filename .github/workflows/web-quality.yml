@@ -26,7 +26,8 @@ jobs:
           grep -q 'Publication status matters' "$FILE"
           grep -q 'Skip to main content' "$FILE"
           grep -q 'Diagnoses are maps, not identities' "$FILE"
-          grep -q 'not all 300 planned lessons are finished' "$FILE"
+          grep -q 'Are all 300 planned lessons finished?' "$FILE"
+          grep -q 'unfinished material must stay visibly unfinished' "$FILE"
           grep -q 'Not a medical practice' "$FILE"
           grep -q 'data-state="prototype"' "$FILE"
           echo 'HOSI web quality contract verified.'
