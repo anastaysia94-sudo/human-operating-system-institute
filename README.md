@@ -17,6 +17,12 @@ HOSI is an open educational project focused on the human mind, brain, behavior, 
 
 This repository is the canonical public source repository for the HOSI project. It currently contains foundational documents, curriculum-development specifications, web and Android scaffolds, and AI/Atlas architecture. Production deployment, independent academic review, final source verification, and release testing remain active work.
 
+Current HOSI-101 draft evidence-audit records include:
+- `research/HOSI101_EVIDENCE_AUDIT_21-37_2026-09-13.md`
+- `research/HOSI101_HIGH_SENSITIVITY_EVIDENCE_AUDIT_2026-09-13.md`
+
+These are AI-assisted research-development records, not substitutes for independent human academic, clinical-safety, lived-experience, accessibility, or citation review.
+
 ## Repository map
 
 - `constitution/` — founding charter and governance principles
