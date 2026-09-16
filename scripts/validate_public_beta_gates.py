@@ -50,6 +50,13 @@ def load_json(path: Path):
     return None
 
 
+def normalize_markdown(value: str) -> str:
+    """Normalize simple Markdown emphasis so policy checks test meaning, not styling."""
+    value = value.replace("**", "").replace("__", "")
+    value = value.replace("`", "")
+    return re.sub(r"\s+", " ", value).strip()
+
+
 for path in REQUIRED:
     if not path.exists():
         fail(f"missing required file: {path.relative_to(ROOT)}")
@@ -158,14 +165,16 @@ if manifest.get("release_state") != "not_approved" and critical_open:
     fail("release cannot advance while critical corrections are open")
 
 checklist = (REVIEW / "PUBLIC_BETA_CHECKLIST.md").read_text(encoding="utf-8") if (REVIEW / "PUBLIC_BETA_CHECKLIST.md").exists() else ""
-if "Authorized human release decision" not in checklist:
+plain_checklist = normalize_markdown(checklist).lower()
+if "authorized human release decision" not in plain_checklist:
     fail("public-beta checklist missing final human release decision control")
-if "may not" not in checklist.lower() or "final human-decision box" not in checklist.lower():
+if "may not" not in plain_checklist or "final human-decision box" not in plain_checklist:
     fail("public-beta checklist must explicitly prohibit CI from checking the final human decision")
 
 policy = (REVIEW / "RELEASE_POLICY.md").read_text(encoding="utf-8") if (REVIEW / "RELEASE_POLICY.md").exists() else ""
+plain_policy = normalize_markdown(policy).lower()
 for phrase in ("Public beta", "Superseded", "Only an authorized human release decision", "CI may block release but may not approve it"):
-    if phrase.lower() not in policy.lower():
+    if normalize_markdown(phrase).lower() not in plain_policy:
         fail(f"release policy missing control: {phrase}")
 
 print(f"HOSI public-beta governance QA: {len(gates)} gates, {len(events)} review events, {len(corrections)} corrections")
