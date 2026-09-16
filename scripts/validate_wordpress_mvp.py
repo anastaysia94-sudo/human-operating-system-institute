@@ -50,6 +50,22 @@ def text(path: Path) -> str:
         return ""
 
 
+def contains_unnegated_claim(haystack: str, phrase: str) -> bool:
+    """Return True only when a risky phrase appears without nearby negation.
+
+    This avoids flagging protective text such as
+    'does not claim all 200 lessons are complete' as though it made the claim.
+    """
+    pattern = re.compile(re.escape(phrase), re.IGNORECASE)
+    lowered = haystack.lower()
+    for match in pattern.finditer(haystack):
+        prefix = lowered[max(0, match.start() - 64):match.start()]
+        if re.search(r"\b(?:not|never|no|doesn't|does not|do not|cannot|can't)\b[^.!?]{0,60}$", prefix):
+            continue
+        return True
+    return False
+
+
 for path in REQUIRED_FILES:
     if not path.exists():
         fail(f"missing required file: {path.relative_to(ROOT)}")
@@ -229,9 +245,11 @@ for phrase in ("keyboard", "alt text", "mobile", "color alone", "screen-reader",
         fail(f"accessibility checklist missing: {phrase}")
 
 preview = text(PREVIEW)
-for forbidden in ("300 planned lessons", "Reviewed curriculum foundation", "all 200 lessons are complete"):
+for forbidden in ("300 planned lessons", "Reviewed curriculum foundation"):
     if forbidden.lower() in preview.lower():
         fail(f"static preview contains stale/false status language: {forbidden}")
+if contains_unnegated_claim(preview, "all 200 lessons are complete"):
+    fail("static preview contains an unqualified false completion claim: all 200 lessons are complete")
 for required in ("200 planned lessons", "20 modules", "Curriculum development", "human review pending"):
     if required.lower() not in preview.lower():
         fail(f"static preview missing canonical status text: {required}")
