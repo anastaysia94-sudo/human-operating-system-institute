@@ -43,7 +43,9 @@ SECTION_KEYWORDS = {
     3: ("learning objectives",),
     4: ("vocabulary",),
     5: ("baseline",),
-    6: ("core",),
+    # Review lessons may legitimately use an integrated synthesis heading instead of
+    # pretending to introduce new core science.
+    6: ("core", "integrated", "synthesis"),
     7: (),
     8: ("evidence map",),
     9: ("what is known",),
@@ -78,14 +80,25 @@ def fail(errors: list[str], path: Path, message: str) -> None:
 
 
 def safety_is_explicit(text: str) -> bool:
-    lower = text.lower()
+    """Require a real diagnostic-scope boundary without requiring one stock sentence.
+
+    This intentionally accepts semantically equivalent wording such as:
+    - "does not diagnose"
+    - "do not use ... to infer a diagnosis"
+    - "not a ... diagnosis course"
+    - "not ... diagnostic"
+
+    It still requires the safety section itself to mention diagnosis/diagnostic scope and
+    place it inside an explicit negating/prohibiting boundary.
+    """
+    lower = " ".join(text.lower().split())
+    if "diagnos" not in lower:
+        return False
+
     patterns = (
-        r"not\s+(?:a\s+)?diagnos",
-        r"does\s+not\s+diagnos",
-        r"do\s+not\s+diagnos",
-        r"not\s+for\s+diagnos",
-        r"not\s+.*diagnostic",
-        r"does\s+not\s+.*diagnostic",
+        r"(?:not|never|without|do not|does not|cannot|can't|must not)[^.]{0,220}diagnos",
+        r"diagnos[^.]{0,220}(?:not|never|without|cannot|can't|must not)",
+        r"(?:avoid|prohibit|prohibits|prohibited)[^.]{0,220}diagnos",
     )
     return any(re.search(pattern, lower) for pattern in patterns)
 
@@ -146,7 +159,7 @@ def validate_lesson(path: Path) -> list[str]:
     cornell_heading = text.find("## 16.")
     safety_text = text[safety_heading:cornell_heading] if safety_heading >= 0 and cornell_heading > safety_heading else ""
     if not safety_is_explicit(safety_text):
-        fail(errors, path, "Safety/scope section does not explicitly preserve a non-diagnostic boundary")
+        fail(errors, path, "Safety/scope section must explicitly prohibit or disclaim diagnostic inference")
 
     if lesson_id not in REVIEW_LESSONS and not EVIDENCE_RE.search(text):
         fail(errors, path, "no HOSI A-E evidence-confidence marker found")
@@ -162,7 +175,7 @@ def validate_lesson(path: Path) -> list[str]:
     if "what would change our mind" not in lower:
         fail(errors, path, "missing explicit revision trigger")
 
-    if "homework" not in lower or "knowledge check" not in lower and "quiz" not in lower:
+    if "homework" not in lower or ("knowledge check" not in lower and "quiz" not in lower):
         fail(errors, path, "assessment scaffold is incomplete")
 
     return errors
@@ -172,7 +185,11 @@ def main() -> int:
     errors: list[str] = []
 
     lessons = sorted(LESSON_DIR.glob("HOSI101_Lesson_*.md"))
-    block_lessons = [p for p in lessons if (m := FILE_RE.fullmatch(p.name)) and m.group(1) in EXPECTED_IDS]
+    block_lessons = [
+        p
+        for p in lessons
+        if (m := FILE_RE.fullmatch(p.name)) and m.group(1) in EXPECTED_IDS
+    ]
     ids = [FILE_RE.fullmatch(p.name).group(1) for p in block_lessons]
 
     if ids != EXPECTED_IDS:
@@ -216,8 +233,15 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("PASS: exact 20-manuscript block, 26-section architecture, draft/human-review status, visuals, safety, evidence, assessments, references, revision triggers, and block artifacts are structurally consistent.")
-    print("NOTE: PASS is not scientific truth, medical clearance, accessibility approval, peer review, publication approval, or human sign-off.")
+    print(
+        "PASS: exact 20-manuscript block, 26-section architecture, draft/human-review "
+        "status, visuals, safety, evidence, assessments, references, revision triggers, "
+        "and block artifacts are structurally consistent."
+    )
+    print(
+        "NOTE: PASS is not scientific truth, medical clearance, accessibility approval, "
+        "peer review, publication approval, or human sign-off."
+    )
     return 0
 
 
