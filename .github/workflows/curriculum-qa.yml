@@ -1,0 +1,39 @@
+name: HOSI Curriculum QA
+
+on:
+  pull_request:
+    paths:
+      - 'courses/HOSI-101/**'
+      - 'research/**'
+      - 'scripts/validate_hosi101.py'
+      - '.github/workflows/curriculum-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'courses/HOSI-101/**'
+      - 'research/**'
+      - 'scripts/validate_hosi101.py'
+      - '.github/workflows/curriculum-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-hosi101:
+    name: Validate HOSI-101 manuscripts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run deterministic curriculum QA
+        run: python scripts/validate_hosi101.py
