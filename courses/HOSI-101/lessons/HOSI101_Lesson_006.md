@@ -93,6 +93,8 @@ Record:
 
 ## 15. Safety / scope
 
+This lesson is not a diagnosis and must not be used to infer a neurological, psychiatric, or learning diagnosis from practice performance, perceived plasticity, or lack of improvement.
+
 Do not use “neuroplasticity” to make claims that someone can cure a medical or psychiatric condition through willpower, stop prescribed treatment, recover from brain injury on a guaranteed schedule, or transform an unvalidated intervention into evidence-based treatment.
 
 ## 16. Cornell Notes
@@ -140,6 +142,7 @@ Read examples of motor learning, rehabilitation, and educational learning separa
 ## 25. Research update log
 
 - 2026-09-16 — Canonical manuscript created; recent learning/plasticity reviews checked; unlimited-rewiring claims explicitly excluded.
+- 2026-09-16 — Diagnostic-scope boundary made explicit during deterministic QA repair.
 - Next gate — neuroscience, rehabilitation/safety, accessibility, assessment and citation review.
 
 ## 26. What would change our mind?
