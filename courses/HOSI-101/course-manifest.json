@@ -1,9 +1,31 @@
 {
   "course": "HOSI-101",
   "title": "Understanding the Human Operating System",
-  "lessons": 20,
-  "status": "development draft — source verification, independent review, assessment validation, and accessibility review required before public instructional release",
-  "student_textbook": "student-textbook-lessons-01-20.md",
-  "teacher_guide": "teacher-guide-answer-key-lessons-01-20.md",
-  "homework": "homework-lessons-01-20.md"
+  "planned_lessons": 200,
+  "planned_modules": 20,
+  "module_size": 10,
+  "capstone": true,
+  "canonical_block": {
+    "lesson_range": "001-020",
+    "modules": [
+      "01 — Orientation",
+      "02 — Neuroscience Foundations"
+    ],
+    "individual_manuscripts": 20,
+    "state": "source_verified_draft_human_review_pending",
+    "publication_state": "not_published",
+    "review_required": [
+      "qualified claim-to-source/full-text review",
+      "subject-matter review",
+      "medical/safety review where applicable",
+      "lived-experience review where applicable",
+      "accessibility review",
+      "assessment/rubric review",
+      "blocking correction resolution",
+      "final automated QA",
+      "explicit human approval"
+    ]
+  },
+  "course_state": "development — canonical draft coverage is partial across the 200-lesson course",
+  "integrity_note": "The existence of 20 canonical manuscripts does not mean the 200-lesson course is complete, reviewed, published, accredited, or approved for certification use."
 }
