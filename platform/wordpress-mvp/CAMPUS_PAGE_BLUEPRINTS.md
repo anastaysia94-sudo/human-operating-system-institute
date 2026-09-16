@@ -59,7 +59,7 @@ Buttons/links:
 - Research Literacy
 - Human Self-Management
 
-These links filter/organize educational material; they do not create a diagnostic profile.
+These links filter/organize educational material; they do not create a diagnostic profile. Choosing a study path does not create a diagnostic profile and does not imply that the learner has that condition.
 
 ### Step 4 — Track your own progress
 Link to the master checklist/manual Scholar Portfolio instructions.
@@ -257,22 +257,3 @@ Explain:
 - content alternatives
 - captions/transcripts when media arrives
 - document accessibility status
-
-Do not claim compliance/certification that has not been audited.
-
-## Contact
-
-Public contact page should avoid soliciting sensitive health histories.
-
-Suggested message:
-`For corrections, accessibility issues, curriculum questions or general inquiries, describe the page/content involved. Please do not send private medical records, trauma narratives or other sensitive personal information through ordinary public contact channels.`
-
-## Study-path navigation on WordPress Free
-
-Since the Free plan has no plugin-dependent personalized filter UI, implement “study-path toggles” as understandable navigation/filter links:
-
-- Study Paths page with buttons/links to tag/archive views or curated pages.
-- Module/course Query Loops can show relevant tagged content where the theme/editor supports the chosen filter.
-- A visitor switching paths is navigating content, not changing a stored personal profile.
-
-Label the interface `View by study path` rather than pretending it is a saved personalized setting.
