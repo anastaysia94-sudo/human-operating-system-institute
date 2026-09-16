@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/reflection-entry.schema.json",
+  "title": "HOSI Atlas Reflection Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "entry_id",
+    "atlas_id",
+    "entry_type",
+    "title",
+    "content",
+    "author_control",
+    "sensitivity",
+    "created_at",
+    "updated_at",
+    "memory_confidence",
+    "fact_status",
+    "human_system_tags",
+    "study_path_tags",
+    "provenance_event_ids"
+  ],
+  "properties": {
+    "entry_id": {"type": "string", "pattern": "^ENT-[A-Za-z0-9_-]{8,64}$"},
+    "atlas_id": {"type": "string", "pattern": "^ATL-[A-Za-z0-9_-]{8,64}$"},
+    "entry_type": {
+      "type": "string",
+      "enum": ["reflection", "timeline", "goal", "value", "belief", "project", "achievement", "learning_history", "oral_history", "note"]
+    },
+    "question_id": {"type": ["string", "null"], "maxLength": 128},
+    "title": {"type": "string", "minLength": 1, "maxLength": 240},
+    "purpose": {"type": ["string", "null"], "maxLength": 1000},
+    "reflection_guidance": {"type": ["string", "null"], "maxLength": 3000},
+    "content": {"type": "string", "maxLength": 100000},
+    "cornell_notes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cues": {"type": "string", "maxLength": 20000},
+        "notes": {"type": "string", "maxLength": 50000},
+        "summary": {"type": "string", "maxLength": 20000}
+      }
+    },
+    "timeline_context": {"type": ["string", "null"], "maxLength": 5000},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "author_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visibility", "ai_processing_allowed", "research_use_allowed", "sharing_allowed"],
+      "properties": {
+        "visibility": {"type": "string", "enum": ["private", "selected_people", "institutional_private", "public"]},
+        "ai_processing_allowed": {"type": "boolean"},
+        "research_use_allowed": {"type": "boolean"},
+        "sharing_allowed": {"type": "boolean"}
+      }
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": ["ordinary", "personal", "sensitive", "highly_sensitive"]
+    },
+    "memory_confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "note"],
+      "properties": {
+        "state": {"type": "string", "enum": ["not_applicable", "low", "medium", "high", "uncertain"]},
+        "note": {"type": "string", "maxLength": 2000}
+      }
+    },
+    "fact_status": {
+      "type": "string",
+      "enum": ["reflection_not_fact_claim", "uncorroborated_recollection", "partially_corroborated", "corroborated", "conflicting_evidence", "unknown"]
+    },
+    "corroboration_notes": {"type": "array", "items": {"type": "string", "maxLength": 5000}},
+    "alternative_interpretations": {"type": "array", "items": {"type": "string", "maxLength": 5000}},
+    "counter_perspectives": {"type": "array", "items": {"type": "string", "maxLength": 5000}},
+    "lessons_learned": {"type": ["string", "null"], "maxLength": 10000},
+    "future_reflection": {"type": ["string", "null"], "maxLength": 10000},
+    "human_system_tags": {"type": "array", "uniqueItems": true, "items": {"type": "string", "maxLength": 100}},
+    "study_path_tags": {"type": "array", "uniqueItems": true, "items": {"type": "string", "maxLength": 100}},
+    "related_lesson_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "maxLength": 128}},
+    "related_research_claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^CLM-[0-9]{4}$"}},
+    "provenance_event_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^PROV-[A-Za-z0-9_-]{8,64}$"}}
+  }
+}
