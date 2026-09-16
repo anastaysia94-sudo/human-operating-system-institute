@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/ai-summary.schema.json",
+  "title": "HOSI Atlas AI Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ai_summary_id",
+    "atlas_id",
+    "source_entry_ids",
+    "purpose",
+    "summary_text",
+    "uncertainty_note",
+    "status",
+    "model_disclosure",
+    "consent_record_id",
+    "created_at",
+    "provenance_event_ids"
+  ],
+  "properties": {
+    "ai_summary_id": {"type": "string", "pattern": "^AIS-[A-Za-z0-9_-]{8,64}$"},
+    "atlas_id": {"type": "string", "pattern": "^ATL-[A-Za-z0-9_-]{8,64}$"},
+    "source_entry_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^ENT-[A-Za-z0-9_-]{8,64}$"}
+    },
+    "purpose": {"type": "string", "enum": ["theme_summary", "timeline_summary", "learning_summary", "reflection_questions", "approved_comparison"]},
+    "summary_text": {"type": "string", "minLength": 1, "maxLength": 50000},
+    "uncertainty_note": {"type": "string", "minLength": 10, "maxLength": 5000},
+    "inferred_themes": {"type": "array", "items": {"type": "string", "maxLength": 500}},
+    "status": {"type": "string", "enum": ["generated", "user_review_required", "accepted", "rejected", "superseded"]},
+    "model_disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ai_generated", "system_name", "generated_at"],
+      "properties": {
+        "ai_generated": {"const": true},
+        "system_name": {"type": "string", "minLength": 2, "maxLength": 200},
+        "model_version": {"type": ["string", "null"], "maxLength": 200},
+        "generated_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "consent_record_id": {"type": "string", "pattern": "^CON-[A-Za-z0-9_-]{8,64}$"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "reviewed_at": {"type": ["string", "null"], "format": "date-time"},
+    "reviewed_by_author": {"type": "boolean"},
+    "author_edits": {"type": ["string", "null"], "maxLength": 50000},
+    "rejection_reason": {"type": ["string", "null"], "maxLength": 5000},
+    "provenance_event_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^PROV-[A-Za-z0-9_-]{8,64}$"}
+    }
+  }
+}
