@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "release_state": "not_approved",
+  "human_release_decision_required": true,
+  "ci_can_approve_release": false,
+  "final_label_allowed_without_human_release_event": false,
+  "gates": [
+    {"gate_id":"GATE-01","name":"subject_matter_review","human_only":true,"applies_to":["curriculum","research"],"status":"not_started"},
+    {"gate_id":"GATE-02","name":"citation_claim_source_audit","human_only":true,"applies_to":["curriculum","research"],"status":"not_started"},
+    {"gate_id":"GATE-03","name":"medical_safety_review","human_only":true,"applies_to":["clinical_or_health_content"],"status":"not_started"},
+    {"gate_id":"GATE-04","name":"lived_experience_review","human_only":true,"applies_to":["condition_specific_content","trauma_content","atlas_prompts"],"status":"not_started"},
+    {"gate_id":"GATE-05","name":"accessibility_review","human_only":true,"applies_to":["public_content","platform","documents"],"status":"not_started"},
+    {"gate_id":"GATE-06","name":"assessment_rubric_review","human_only":true,"applies_to":["assessments","credentials"],"status":"not_started"},
+    {"gate_id":"GATE-07","name":"privacy_security_review","human_only":true,"applies_to":["atlas","accounts","private_data","platform"],"status":"not_started"},
+    {"gate_id":"GATE-08","name":"ai_red_team","human_only":false,"requires_human_signoff":true,"applies_to":["atlas_ai","ai_summaries","ai_recommendation_features"],"status":"not_started"},
+    {"gate_id":"GATE-09","name":"learner_pilot","human_only":false,"requires_human_signoff":true,"applies_to":["public_beta","course_experience"],"status":"not_started"},
+    {"gate_id":"GATE-10","name":"correction_resolution","human_only":false,"requires_human_signoff":true,"applies_to":["all_release_candidates"],"status":"not_started"},
+    {"gate_id":"GATE-11","name":"automated_qa","human_only":false,"requires_human_signoff":false,"applies_to":["all_release_candidates"],"status":"not_started"},
+    {"gate_id":"GATE-12","name":"explicit_human_release_decision","human_only":true,"applies_to":["all_releases"],"status":"not_started"}
+  ],
+  "allowed_statuses": ["not_started","in_progress","changes_required","passed","not_applicable"],
+  "prohibited_automatic_states": ["human_reviewed","peer_review_complete","clinical_safety_approved","accessibility_approved","pilot_approved","release_approved","final"],
+  "notes": "Gate status is descriptive. A passed human gate requires a matching review event; release remains blocked until all applicable gates pass and a human release decision is recorded."
+}
