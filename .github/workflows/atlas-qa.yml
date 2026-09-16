@@ -1,0 +1,37 @@
+name: HOSI Atlas QA
+
+on:
+  pull_request:
+    paths:
+      - 'atlas/**'
+      - 'scripts/validate_atlas_mvp.py'
+      - '.github/workflows/atlas-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'atlas/**'
+      - 'scripts/validate_atlas_mvp.py'
+      - '.github/workflows/atlas-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-atlas:
+    name: Validate Atlas privacy and provenance invariants
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run deterministic Atlas QA
+        run: python scripts/validate_atlas_mvp.py
