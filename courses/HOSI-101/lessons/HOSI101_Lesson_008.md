@@ -123,6 +123,8 @@ Ask:
 
 ## 15. Safety / scope
 
+This lesson is not a diagnostic assessment. Evidence ratings, study findings, or classroom appraisal exercises must not be used to diagnose a learner or another person.
+
 Evidence ratings in HOSI are educational summaries. They do not replace clinical guidelines, regulatory review, individualized risk-benefit decisions, or professional judgment.
 
 A high evidence grade does not mean a treatment is correct for every person; a low grade does not prove something is impossible.
@@ -173,6 +175,7 @@ Read a systematic review’s methods before its conclusion. Identify databases s
 ## 25. Research update log
 
 - 2026-09-16 — Canonical manuscript drafted; National Academies evidence domains and current meta-research incorporated.
+- 2026-09-16 — Diagnostic-scope boundary made explicit during deterministic QA repair.
 - Next gate — evidence-synthesis/statistics, accessibility, assessment and citation review.
 
 ## 26. What would change our mind?
