@@ -22,6 +22,9 @@ Learners can:
 - maintain their own Scholar Portfolio
 
 ### Not claimed on Free
+
+**The $0 campus does not yet store personalized course progress.**
+
 HOSI must not claim server-side personalized progress unless such a system actually exists.
 
 Do not use:
