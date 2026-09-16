@@ -1,0 +1,30 @@
+name: HOSI Public Beta Governance QA
+
+on:
+  pull_request:
+    paths:
+      - 'review/**'
+      - 'scripts/validate_public_beta_gates.py'
+      - '.github/workflows/public-beta-gates.yml'
+  push:
+    paths:
+      - 'review/**'
+      - 'scripts/validate_public_beta_gates.py'
+      - '.github/workflows/public-beta-gates.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-governance:
+    name: Validate review and release gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run deterministic public-beta governance QA
+        run: python scripts/validate_public_beta_gates.py
