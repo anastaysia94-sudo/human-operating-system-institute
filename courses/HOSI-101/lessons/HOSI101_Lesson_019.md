@@ -101,6 +101,8 @@ Include at least eight factors and one structural barrier.
 
 ## 15. Safety / scope
 
+This lesson is not a diagnosis or screening tool, and risk factors described here must not be used to diagnose cognitive impairment, dementia, psychiatric illness, neurological disease, or an individual prognosis.
+
 This lesson provides general education, not individualized prevention or treatment advice. Do not start, stop, or change medication based on this lesson. New cognitive symptoms, neurological changes, sleep concerns, or other health problems should be discussed with appropriate professionals.
 
 ## 16. Cornell Notes
@@ -150,6 +152,7 @@ Read the 2026 WHO guideline’s recommendations and note where evidence is stron
 
 - 2026-09-16 — Canonical manuscript drafted using WHO life-course framework and 2026 risk-reduction guideline.
 - 2026-09-16 — Current WHO second edition verified as the active updated guideline; risk reduction and multidomain framing preserved without individual guarantees.
+- 2026-09-16 — Diagnostic/screening boundary made explicit during deterministic QA repair.
 - Next gate — public-health/neurology SME, medical-safety, accessibility, assessment, and citation review.
 
 ## 26. What would change our mind?
