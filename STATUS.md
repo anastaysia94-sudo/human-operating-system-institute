@@ -1,50 +1,59 @@
 # HOSI 1.0 — Live Project Status
 
-**Snapshot:** 2026-09-05
+**Snapshot:** 2026-09-16
 
 ## Honest completion estimate
 
-**22% overall — architecture is mature and the first curriculum/platform scaffolds are now present; production validation remains substantial.**
+**Development remains partial.** The repository now contains substantially more curriculum, evidence, Atlas, platform, and governance architecture than the 2026-09-05 snapshot, but production release still depends on human review, implementation, testing, and deployment gates.
 
-This percentage is a weighted project-management estimate, not an accreditation, scientific, or software-quality metric.
+Percent-complete estimates are intentionally not treated as scientific, accreditation, or software-quality metrics.
 
-| Workstream | Estimate |
-|---|---:|
-| Vision / requirements | 80% |
-| Academic architecture | 45% |
-| Curriculum production | 15% |
-| Evidence library | 5% |
-| Founder's Atlas | 18% |
-| Student Atlas | 4% |
-| Atlas AI | 2% |
-| WordPress / LMS | 4% |
-| GitHub content architecture | 30% |
-| Branding / visual system | 6% |
-| Governance / academic integrity | 10% |
-| Android client | 4% |
-| QA / pilot / accreditation | 0% |
+## Curriculum state
 
-## Recent work
+- **HOSI-101 canonical plan:** 200 lessons / 20 modules / capstone.
+- **Lessons 1–20:** 20 individual substantive source-verified draft manuscripts now exist on branch `curriculum/hosi101-lessons-01-20`; independent academic/safety/accessibility review pending.
+- **Lessons 21–40:** 20 individual substantive source-verified drafts exist in Draft PR #6; human review pending.
+- **Lessons 41–60:** development-map material exists; do not represent that map as a complete reviewed manuscript block.
+- **Lessons 61–200:** architecture/mapping exists, but substantive canonical manuscript production and review remain incomplete across much of the range.
 
-- Added implementation-oriented WordPress.com launch guidance.
-- Added an Android Kotlin/Compose starter architecture and Gradle configuration.
-- Added a mobile-first web campus prototype.
-- Added GitHub Actions Android build scaffold.
-- Mapped HOSI-101 through Lesson 200.
-- Added GitHub Issues for curriculum, research library, Atlas, WordPress/LMS, and QA/public beta.
+## Evidence / research
+
+- Research Library MVP exists in Draft PR #7.
+- Initial flagship claim set has machine-readable evidence/provenance architecture and current-evidence contradiction/supersession searches.
+- AI-assisted source discovery and CI are **not** human full-text review or scientific approval.
+
+## Atlas
+
+- Privacy-first Atlas schemas, consent/provenance architecture, synthetic fixture, authorization boundaries, and synthetic red-team policy coverage exist in Draft PR #8.
+- No green repository check proves production security, cross-user isolation, privacy-law compliance, or successful red-team execution against a real backend/model.
+- Real sensitive-data collection remains gated.
+
+## WordPress / campus
+
+- WordPress.com $0-campus blueprint exists in Draft PR #9 and deterministic repository QA has passed.
+- A green blueprint check is not evidence that a live WordPress.com deployment, rendered accessibility verification, logged-out production verification, or LMS capability exists.
+
+## Governance / public beta
+
+- Formal public-beta/release gate architecture exists in Draft PR #10 and governance QA has passed.
+- Human-only gates remain human-only. CI may block but may not award peer review, clinical-safety approval, accessibility approval, pilot approval, release approval, or “final” status.
 
 ## Still incomplete
 
-- Lessons 81–200 need full researched prose, not only specifications.
-- Every medical/clinical claim needs source-by-source verification.
-- Independent subject-matter, lived-experience, accessibility, and safety review is not complete.
-- WordPress site is not connected or deployed from this repository.
-- Plugin-based LMS is not installed; the free WordPress.com plan does not support plugin installation.
-- Atlas persistence/backend is not implemented.
-- Atlas AI is not implemented or red-teamed.
-- Android app is a starter scaffold, not a signed production release.
+- Qualified human claim-to-source/full-text review for publishable scientific/clinical claims.
+- Subject-matter, lived-experience, accessibility, assessment, clinical/safety, privacy/security, and platform review where applicable.
+- Blocking correction resolution and re-review.
+- Real learner pilot.
+- Production WordPress deployment and live-device/accessibility checks.
+- Atlas authentication/session, authorization, encryption/secrets, export/deletion, incident-response, and cross-user testing.
+- Actual Atlas AI red-team execution against a testable implementation.
+- Android app remains development work, not a signed production release.
 - Formal accreditation/authorization does not exist.
 
-## 100% gate
+## Definition-of-done boundary
 
-See `governance/100_PERCENT_DEFINITION_OF_DONE.md`. Generation of files is not the definition of completion.
+Generation of files, source discovery, or green CI is **not** the definition of 100% project completion. Every release must preserve the sequence:
+
+**RESEARCH → PLAN → IMPLEMENT → TEST → REVIEW → DOCUMENT → PR → HUMAN APPROVAL → MERGE → RELEASE**
+
+See `governance/100_PERCENT_DEFINITION_OF_DONE.md` for project-wide release rules.
