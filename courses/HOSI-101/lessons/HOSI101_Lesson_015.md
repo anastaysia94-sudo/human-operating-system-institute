@@ -95,6 +95,8 @@ Build a brainstem table with columns for division, example nuclei/functions, maj
 
 ## 15. Safety / scope
 
+This lesson is not a diagnosis and must not be used to diagnose or localize an individual neurological condition from symptoms, subjective experience, or classroom diagrams.
+
 Sudden breathing difficulty, loss of consciousness, new facial weakness, trouble swallowing, severe vertigo with other neurological deficits, acute double vision, or other possible brainstem signs can be emergencies. This course is not for triage or localization. Seek appropriate urgent medical care for acute concerning neurological symptoms.
 
 ## 16. Cornell Notes
@@ -143,6 +145,7 @@ Review a brainstem atlas together with modern neuromodulatory/connectivity resea
 ## 25. Research update log
 
 - 2026-09-16 — Canonical manuscript drafted with current brainstem-cortical integration evidence.
+- 2026-09-16 — Diagnostic/localization boundary made explicit during deterministic QA repair.
 - Next gate — neurology/brainstem SME, medical-safety, accessibility, assessment, and citation review.
 
 ## 26. What would change our mind?
