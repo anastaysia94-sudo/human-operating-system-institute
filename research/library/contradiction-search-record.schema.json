@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/contradiction-search-record.schema.json",
+  "title": "HOSI Contradiction / Supersession Search Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["search_id","claim_id","searched_on","scope","source_ids","result","summary","human_full_text_review_pending"],
+  "properties": {
+    "search_id": {"type":"string","pattern":"^CSR-[0-9]{4}$"},
+    "claim_id": {"type":"string","pattern":"^CLM-[0-9]{4}$"},
+    "searched_on": {"type":"string","format":"date"},
+    "scope": {"type":"string","minLength":5},
+    "source_ids": {"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","pattern":"^SRC-[0-9]{4}$"}},
+    "result": {"type":"string","enum":["no_material_conflict_found","mixed_or_qualifying_evidence_found","material_conflict_found","superseded"]},
+    "summary": {"type":"string","minLength":10},
+    "recommended_claim_action": {"type":"string","enum":["retain_bounded_claim","narrow_claim","hold_claim","supersede_claim","human_review_required_before_state_change"]},
+    "human_full_text_review_pending": {"type":"boolean"},
+    "notes": {"type":["string","null"]}
+  }
+}
