@@ -105,7 +105,9 @@ Write:
 
 ## 15. Safety / scope
 
-Do not perform risky experiments on yourself or others to answer classroom questions. Do not change prescribed medication, sleep deprivation, substance use, or medical treatment as a student experiment. Human research requires ethical safeguards appropriate to risk.
+This lesson is not a diagnostic method, and a classroom experiment or research-design exercise must not be used to diagnose a medical, psychiatric, neurological, or learning condition.
+
+Do not perform risky experiments on yourself or others to answer classroom questions. Do not change prescribed medication, induce sleep deprivation, alter substance use, or change medical treatment as a student experiment. Human research requires ethical safeguards appropriate to risk.
 
 ## 16. Cornell Notes
 
@@ -152,6 +154,7 @@ Review current reporting guidelines in a field of interest and identify which pr
 ## 25. Research update log
 
 - 2026-09-16 — Canonical lesson drafted; National Academies reproducibility definitions and recent meta-research incorporated.
+- 2026-09-16 — Diagnostic-scope boundary made explicit during deterministic QA repair.
 - Next gate — methods/statistics subject-matter, ethics, accessibility, assessment and citation review.
 
 ## 26. What would change our mind?
