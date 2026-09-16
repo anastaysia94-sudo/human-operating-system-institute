@@ -47,6 +47,9 @@ Link to Evidence Guide.
 Link to Course Index and Module 01.
 
 ### Step 3 — Choose an optional study path
+
+Visible navigation label: **View by study path**
+
 Buttons/links:
 - Bipolar Studies
 - ADHD Studies
