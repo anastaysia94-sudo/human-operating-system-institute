@@ -99,6 +99,8 @@ Explain what evidence would be needed to tell the mechanisms apart.
 
 ## 15. Safety / scope
 
+This lesson is not a diagnosis and must not be used to infer a neurological, psychiatric, developmental, or rehabilitation diagnosis from a person’s apparent ability to learn, compensate, improve, plateau, or recover.
+
 This lesson does not promise recovery, prescribe rehabilitation, or direct treatment. Neurological rehabilitation should be individualized when clinically indicated. Neuroplasticity claims should never be used to blame a person for persistent impairment.
 
 ## 16. Cornell Notes
@@ -147,6 +149,7 @@ Compare learning-related imaging studies that report rapid versus longer-term ch
 
 - 2026-09-16 — Canonical manuscript drafted from current plasticity reviews.
 - 2026-09-16 — Fresh literature check identified 2026 human learning/plasticity reviews reinforcing measurable change while emphasizing heterogeneous mechanisms and imaging interpretation limits.
+- 2026-09-16 — Diagnostic-scope boundary made explicit during deterministic QA repair.
 - Next gate — plasticity/rehabilitation SME, medical-safety, accessibility, assessment, and citation review.
 
 ## 26. What would change our mind?
