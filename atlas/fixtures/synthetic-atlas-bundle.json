@@ -1,0 +1,194 @@
+{
+  "fixture_notice": "Synthetic QA data only. This is not a real person, medical history, or learner record.",
+  "atlas": {
+    "atlas_id": "ATL-SYNTH0001",
+    "atlas_type": "learner",
+    "author_id": "synthetic-user-001",
+    "ownership": "author_owned_hosi_stewarded",
+    "privacy_default": "private",
+    "display_name": "Synthetic Learner",
+    "created_at": "2026-09-15T12:00:00Z",
+    "updated_at": "2026-09-15T12:10:00Z",
+    "consent_record_ids": ["CON-SYNTH0001", "CON-SYNTH0002"],
+    "entry_ids": ["ENT-SYNTH0001"],
+    "ai_summary_ids": ["AIS-SYNTH0001"],
+    "provenance_event_ids": ["PROV-SYNTH0001", "PROV-SYNTH0002", "PROV-SYNTH0003"],
+    "knowledge_graph_edge_ids": ["EDGE-SYNTH0001"],
+    "export_state": {
+      "status": "available",
+      "last_requested_at": null,
+      "last_completed_at": null
+    },
+    "deletion_state": {
+      "status": "active",
+      "requested_at": null,
+      "effective_at": null,
+      "exceptions": []
+    }
+  },
+  "entries": [
+    {
+      "entry_id": "ENT-SYNTH0001",
+      "atlas_id": "ATL-SYNTH0001",
+      "entry_type": "reflection",
+      "question_id": "HOSI-SYNTH-Q001",
+      "title": "A study routine that helped",
+      "purpose": "Synthetic test of ordinary learning reflection structure.",
+      "reflection_guidance": "Describe a routine without disclosing sensitive personal information.",
+      "content": "I remembered material better when I reviewed my notes on several different days instead of only once.",
+      "cornell_notes": {
+        "cues": "spacing; review",
+        "notes": "Short sessions on different days felt easier to recall later.",
+        "summary": "The synthetic learner reports that distributed review felt useful. This is a personal observation, not experimental evidence."
+      },
+      "timeline_context": "Synthetic school term",
+      "created_at": "2026-09-15T12:01:00Z",
+      "updated_at": "2026-09-15T12:01:00Z",
+      "author_control": {
+        "visibility": "private",
+        "ai_processing_allowed": true,
+        "research_use_allowed": false,
+        "sharing_allowed": false
+      },
+      "sensitivity": "ordinary",
+      "memory_confidence": {
+        "state": "medium",
+        "note": "Subjective confidence only; not a factual accuracy measure."
+      },
+      "fact_status": "reflection_not_fact_claim",
+      "corroboration_notes": [],
+      "alternative_interpretations": ["The topic may also have been easier or studied for longer."],
+      "counter_perspectives": [],
+      "lessons_learned": "Try distributing future review sessions.",
+      "future_reflection": "Compare study methods without treating one personal observation as proof.",
+      "human_system_tags": ["learning", "memory"],
+      "study_path_tags": ["Human Operating Systems"],
+      "related_lesson_ids": ["HOSI-101-031"],
+      "related_research_claim_ids": [],
+      "provenance_event_ids": ["PROV-SYNTH0001"]
+    }
+  ],
+  "consents": [
+    {
+      "consent_id": "CON-SYNTH0001",
+      "atlas_id": "ATL-SYNTH0001",
+      "author_id": "synthetic-user-001",
+      "purpose": "atlas_storage",
+      "scope": {
+        "all_entries": true,
+        "entry_ids": [],
+        "data_categories": ["ordinary_reflection", "education"]
+      },
+      "status": "granted",
+      "granted_at": "2026-09-15T12:00:00Z",
+      "withdrawn_at": null,
+      "expires_at": null,
+      "version": "1.0",
+      "plain_language_notice": "Store this synthetic Atlas reflection privately so the learner can return to it later.",
+      "provenance_event_id": "PROV-SYNTH0002"
+    },
+    {
+      "consent_id": "CON-SYNTH0002",
+      "atlas_id": "ATL-SYNTH0001",
+      "author_id": "synthetic-user-001",
+      "purpose": "ai_summary",
+      "scope": {
+        "all_entries": false,
+        "entry_ids": ["ENT-SYNTH0001"],
+        "data_categories": ["ordinary_reflection", "education"]
+      },
+      "status": "granted",
+      "granted_at": "2026-09-15T12:05:00Z",
+      "withdrawn_at": null,
+      "expires_at": null,
+      "version": "1.0",
+      "plain_language_notice": "Allow AI to summarize only the selected synthetic reflection. The summary requires author review before acceptance.",
+      "provenance_event_id": "PROV-SYNTH0003"
+    }
+  ],
+  "ai_summaries": [
+    {
+      "ai_summary_id": "AIS-SYNTH0001",
+      "atlas_id": "ATL-SYNTH0001",
+      "source_entry_ids": ["ENT-SYNTH0001"],
+      "purpose": "learning_summary",
+      "summary_text": "The synthetic learner noticed that reviewing material across multiple days seemed to support later recall and wants to compare study methods more deliberately.",
+      "uncertainty_note": "This summary reflects one synthetic self-report and does not establish causation, diagnosis, or treatment efficacy.",
+      "inferred_themes": ["distributed review", "learning reflection"],
+      "status": "user_review_required",
+      "model_disclosure": {
+        "ai_generated": true,
+        "system_name": "Synthetic Atlas AI QA fixture",
+        "model_version": null,
+        "generated_at": "2026-09-15T12:06:00Z"
+      },
+      "consent_record_id": "CON-SYNTH0002",
+      "created_at": "2026-09-15T12:06:00Z",
+      "reviewed_at": null,
+      "reviewed_by_author": false,
+      "author_edits": null,
+      "rejection_reason": null,
+      "provenance_event_ids": ["PROV-SYNTH0003"]
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "EDGE-SYNTH0001",
+      "atlas_id": "ATL-SYNTH0001",
+      "source_node_id": "ENT-SYNTH0001",
+      "target_node_id": "HOSI-101-031",
+      "relationship_type": "reflects_on",
+      "provenance_type": "ai_suggested",
+      "status": "user_review_required",
+      "label": "Possible connection to Spaced Practice",
+      "uncertainty_note": "AI-suggested educational link awaiting user approval.",
+      "created_at": "2026-09-15T12:07:00Z",
+      "reviewed_at": null,
+      "provenance_event_id": "PROV-SYNTH0003"
+    }
+  ],
+  "provenance_events": [
+    {
+      "provenance_event_id": "PROV-SYNTH0001",
+      "atlas_id": "ATL-SYNTH0001",
+      "event_type": "created",
+      "actor_type": "author",
+      "actor_id": "synthetic-user-001",
+      "occurred_at": "2026-09-15T12:01:00Z",
+      "object_type": "entry",
+      "object_id": "ENT-SYNTH0001",
+      "description": "Synthetic learner created a private ordinary reflection.",
+      "previous_version_hash": null,
+      "new_version_hash": null,
+      "consent_record_id": "CON-SYNTH0001"
+    },
+    {
+      "provenance_event_id": "PROV-SYNTH0002",
+      "atlas_id": "ATL-SYNTH0001",
+      "event_type": "consent_granted",
+      "actor_type": "author",
+      "actor_id": "synthetic-user-001",
+      "occurred_at": "2026-09-15T12:00:00Z",
+      "object_type": "consent",
+      "object_id": "CON-SYNTH0001",
+      "description": "Synthetic storage consent granted.",
+      "previous_version_hash": null,
+      "new_version_hash": null,
+      "consent_record_id": "CON-SYNTH0001"
+    },
+    {
+      "provenance_event_id": "PROV-SYNTH0003",
+      "atlas_id": "ATL-SYNTH0001",
+      "event_type": "ai_summary_generated",
+      "actor_type": "ai_system",
+      "actor_id": "synthetic-atlas-ai",
+      "occurred_at": "2026-09-15T12:06:00Z",
+      "object_type": "ai_summary",
+      "object_id": "AIS-SYNTH0001",
+      "description": "Synthetic AI summary generated under explicit selected-entry consent and left pending author review.",
+      "previous_version_hash": null,
+      "new_version_hash": null,
+      "consent_record_id": "CON-SYNTH0002"
+    }
+  ]
+}
