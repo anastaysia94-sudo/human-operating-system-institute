@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Structural validator for HOSI Atlas synthetic red-team policy scenarios.
+"""Structural validator for HOSI Atlas synthetic red-team scenarios.
 
-This validates scenario coverage and release-blocker semantics before an actual
-backend/AI implementation exists. It does not claim any scenario was executed.
+The Atlas branch now has a small executable synthetic backend. This validator allows
+real pass records only when structured execution evidence exists, while preserving
+blocked states for scenarios that still require an AI model or sharing implementation.
 """
 
 from __future__ import annotations
@@ -17,6 +18,7 @@ ATLAS = ROOT / "atlas"
 SCENARIOS = ATLAS / "red-team" / "scenarios.json"
 CONTRACT = ATLAS / "AUTHORIZATION_AND_DATA_BOUNDARY_CONTRACT.md"
 REDTEAM_README = ATLAS / "red-team" / "README.md"
+BACKEND_TEST = ROOT / "scripts" / "test_atlas_backend.py"
 
 errors: list[str] = []
 
@@ -35,7 +37,7 @@ def load(path: Path):
     return None
 
 
-for path in (CONTRACT, REDTEAM_README, SCENARIOS):
+for path in (CONTRACT, REDTEAM_README, SCENARIOS, BACKEND_TEST):
     if not path.exists():
         fail(f"missing required Atlas red-team artifact: {path.relative_to(ROOT)}")
 
@@ -67,6 +69,8 @@ required_fields = {
 
 ids: set[str] = set()
 names: set[str] = set()
+passes: set[str] = set()
+blocked: set[str] = set()
 for index, record in enumerate(records):
     label = f"scenarios[{index}]"
     if not isinstance(record, dict):
@@ -90,12 +94,16 @@ for index, record in enumerate(records):
     else:
         names.add(name)
     if record.get("synthetic_only") is not True:
-        fail(f"{scenario_id or label} must remain synthetic_only=true in pre-implementation suite")
+        fail(f"{scenario_id or label} must remain synthetic_only=true in synthetic suite")
     if record.get("severity") != "release_blocker_if_failed":
         fail(f"{scenario_id or label} must be a release blocker if failed")
     status = record.get("status")
     if status not in allowed_statuses:
         fail(f"{scenario_id or label} invalid status: {status!r}")
+    if status == "pass":
+        passes.add(scenario_id)
+    if status == "blocked_by_missing_implementation":
+        blocked.add(scenario_id)
     expected = record.get("expected_safe_behavior")
     prohibited = record.get("prohibited_behavior")
     if not isinstance(expected, list) or not expected:
@@ -103,8 +111,8 @@ for index, record in enumerate(records):
     if not isinstance(prohibited, list) or not prohibited:
         fail(f"{scenario_id or label} requires prohibited_behavior")
     evidence = record.get("execution_evidence")
-    if status == "not_executed" and evidence is not None:
-        fail(f"{scenario_id or label} is not_executed but contains execution evidence")
+    if status in {"not_executed","blocked_by_missing_implementation"} and evidence is not None:
+        fail(f"{scenario_id or label} status {status} must not contain execution evidence")
     if status in {"pass","fail"}:
         if not isinstance(evidence, dict):
             fail(f"{scenario_id or label} status {status} requires structured execution_evidence")
@@ -117,10 +125,12 @@ missing_names = sorted(required_names - names)
 if missing_names:
     fail(f"missing required red-team scenarios: {', '.join(missing_names)}")
 
-# This branch has architecture/fixtures, not a live implementation. A synthetic scenario
-# may not be magically marked passed before there is execution evidence.
-if any(r.get("status") == "pass" for r in records if isinstance(r, dict)):
-    fail("pre-implementation Atlas branch must not contain fabricated red-team passes")
+expected_backend_passes = {"RT-005","RT-006","RT-007","RT-008","RT-009","RT-011"}
+if passes != expected_backend_passes:
+    fail(f"backend executable pass set mismatch: expected {sorted(expected_backend_passes)}, got {sorted(passes)}")
+expected_blocked = {"RT-001","RT-002","RT-003","RT-004","RT-010","RT-012"}
+if blocked != expected_blocked:
+    fail(f"missing-implementation blocker set mismatch: expected {sorted(expected_blocked)}, got {sorted(blocked)}")
 
 contract = CONTRACT.read_text(encoding="utf-8") if CONTRACT.exists() else ""
 for phrase in (
@@ -141,12 +151,12 @@ if "no fabricated passes" not in readme.lower():
 if "cannot prove" not in readme.lower():
     fail("red-team README must state what CI cannot prove")
 
-print(f"HOSI Atlas red-team QA: {len(records)} synthetic scenarios, 0 fabricated passes expected")
+print(f"HOSI Atlas red-team QA: {len(records)} scenarios, {len(passes)} executed backend passes, {len(blocked)} blocked")
 if errors:
     for msg in errors:
         print(f"ERROR: {msg}", file=sys.stderr)
     print(f"FAILED: {len(errors)} validation error(s)", file=sys.stderr)
     sys.exit(1)
 
-print("PASS: synthetic red-team policy coverage is structurally consistent")
-print("NOTE: PASS does not mean the scenarios were executed against a production or test implementation.")
+print("PASS: executed backend evidence and remaining implementation blockers are structurally consistent")
+print("NOTE: backend passes do not prove production security or safe behavior from an unimplemented AI model/sharing layer.")
