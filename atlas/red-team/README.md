@@ -36,6 +36,8 @@ The Python/SQLite synthetic backend now exercises:
 
 These tests use only fictional `.invalid` accounts and an in-memory database.
 
+The first executable-backend run, `35181488794`, passed on commit `de83aaccb6e0a75920e4ff95265d641764441a3d`. The scenario registry records those observed backend behaviors separately from still-unimplemented model/sharing tests.
+
 ## What remains blocked
 
 The current repository still lacks a real Atlas AI model pipeline and a public-sharing implementation. Therefore these scenarios cannot honestly pass yet:
