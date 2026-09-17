@@ -44,4 +44,6 @@ jobs:
         run: python scripts/validate_atlas_red_team.py
 
       - name: Run executable Atlas authorization and lifecycle tests
+        env:
+          PYTHONPATH: .
         run: python scripts/test_atlas_backend.py
