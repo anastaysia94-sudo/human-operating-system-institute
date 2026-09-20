@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/atlas.schema.json",
+  "title": "HOSI Atlas",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "atlas_id",
+    "atlas_type",
+    "author_id",
+    "ownership",
+    "privacy_default",
+    "created_at",
+    "updated_at",
+    "consent_record_ids",
+    "entry_ids",
+    "ai_summary_ids",
+    "provenance_event_ids",
+    "export_state",
+    "deletion_state"
+  ],
+  "properties": {
+    "atlas_id": {"type": "string", "pattern": "^ATL-[A-Za-z0-9_-]{8,64}$"},
+    "atlas_type": {"type": "string", "enum": ["founder", "learner", "visitor"]},
+    "author_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "ownership": {"const": "author_owned_hosi_stewarded"},
+    "privacy_default": {"const": "private"},
+    "display_name": {"type": ["string", "null"], "maxLength": 120},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "consent_record_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^CON-[A-Za-z0-9_-]{8,64}$"}
+    },
+    "entry_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^ENT-[A-Za-z0-9_-]{8,64}$"}
+    },
+    "ai_summary_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^AIS-[A-Za-z0-9_-]{8,64}$"}
+    },
+    "provenance_event_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^PROV-[A-Za-z0-9_-]{8,64}$"}
+    },
+    "knowledge_graph_edge_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^EDGE-[A-Za-z0-9_-]{8,64}$"}
+    },
+    "export_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {"type": "string", "enum": ["available", "requested", "preparing", "ready", "completed", "failed"]},
+        "last_requested_at": {"type": ["string", "null"], "format": "date-time"},
+        "last_completed_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "deletion_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {"type": "string", "enum": ["active", "requested", "cooldown", "deleting", "deleted", "failed"]},
+        "requested_at": {"type": ["string", "null"], "format": "date-time"},
+        "effective_at": {"type": ["string", "null"], "format": "date-time"},
+        "exceptions": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
