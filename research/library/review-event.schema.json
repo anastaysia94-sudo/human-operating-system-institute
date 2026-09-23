@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/review-event.schema.json",
+  "title": "HOSI Review Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_event_id",
+    "reviewer_name",
+    "reviewer_role",
+    "expertise_or_perspective",
+    "conflict_of_interest",
+    "review_date",
+    "reviewed_source_ids",
+    "reviewed_claim_ids",
+    "decision",
+    "notes",
+    "repository_commit"
+  ],
+  "properties": {
+    "review_event_id": {"type": "string", "pattern": "^REV-[0-9]{4}$"},
+    "reviewer_name": {"type": "string", "minLength": 2},
+    "reviewer_role": {
+      "type": "string",
+      "enum": ["subject_matter", "clinical_safety", "lived_experience", "accessibility", "assessment", "editorial", "other"]
+    },
+    "expertise_or_perspective": {"type": "string", "minLength": 3},
+    "conflict_of_interest": {"type": "string"},
+    "review_date": {"type": "string", "format": "date"},
+    "reviewed_source_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^SRC-[0-9]{4}$"}},
+    "reviewed_claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^CLM-[0-9]{4}$"}},
+    "decision": {
+      "type": "string",
+      "enum": ["approve_for_next_gate", "approve_with_non_blocking_corrections", "revise_and_re_review", "hold"]
+    },
+    "notes": {"type": "string"},
+    "requested_corrections": {"type": "array", "items": {"type": "string"}},
+    "repository_commit": {"type": "string", "minLength": 7}
+  }
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "search_id":"CSR-0001",
+    "claim_id":"CLM-0001",
+    "searched_on":"2026-09-16",
+    "scope":"Current review evidence on localized versus distributed brain-wide representations supporting cognition.",
+    "source_ids":["SRC-0001","SRC-0010","SRC-0013"],
+    "result":"mixed_or_qualifying_evidence_found",
+    "summary":"Current review evidence supports broadly distributed but not literally ubiquitous cognitive signals, reinforcing the bounded systems claim while qualifying simplistic localization and everything-everywhere accounts.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"No individual diagnostic inference is supported."
+  },
+  {
+    "search_id":"CSR-0002",
+    "claim_id":"CLM-0002",
+    "searched_on":"2026-09-16",
+    "scope":"Current mechanistic and authoritative sources on homeostatic and circadian sleep regulation and model refinement.",
+    "source_ids":["SRC-0002","SRC-0014","SRC-0015"],
+    "result":"mixed_or_qualifying_evidence_found",
+    "summary":"The homeostatic-circadian interaction remains a major framework, while newer work refines how the processes interact and cautions against treating one formulation as biologically complete.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"Use as an educational framework, not a complete mechanistic or diagnostic model."
+  },
+  {
+    "search_id":"CSR-0003",
+    "claim_id":"CLM-0003",
+    "searched_on":"2026-09-16",
+    "scope":"Current major-depressive-disorder guideline evidence for CBT as an initial psychotherapy option.",
+    "source_ids":["SRC-0003","SRC-0016"],
+    "result":"no_material_conflict_found",
+    "summary":"VA/DoD and ACP guidance support CBT as an evidence-based treatment option for adult MDD while preserving severity, feasibility, harms, comorbidity and patient-preference considerations.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"Does not establish superiority for every patient or diagnosis."
+  },
+  {
+    "search_id":"CSR-0004",
+    "claim_id":"CLM-0004",
+    "searched_on":"2026-09-16",
+    "scope":"Current bipolar guideline, taskforce, review and emerging trial evidence for IPSRT and comparative psychotherapy claims.",
+    "source_ids":["SRC-0004","SRC-0017","SRC-0018","SRC-0019","SRC-0024"],
+    "result":"mixed_or_qualifying_evidence_found",
+    "summary":"IPSRT remains a recognized adjunctive psychotherapy with randomized evidence, but current VA/DoD guidance does not rank it above CBT, family/conjoint therapy or non-brief psychoeducation; a small 2026 trial is supportive but not sufficient to erase comparative uncertainty.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"Keep the claim conservative; do not upgrade to universal efficacy or superiority."
+  },
+  {
+    "search_id":"CSR-0005",
+    "claim_id":"CLM-0005",
+    "searched_on":"2026-09-16",
+    "scope":"Cross-guideline evidence on multimodal bipolar-disorder management and psychosocial/recovery-oriented care.",
+    "source_ids":["SRC-0005","SRC-0017","SRC-0019"],
+    "result":"no_material_conflict_found",
+    "summary":"Current NICE and VA/DoD guidance and a recent international-guideline review support multimodal bipolar care including psychosocial and pharmacological components rather than medication-only framing.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"This supports balanced treatment literacy, not anti-medication messaging."
+  },
+  {
+    "search_id":"CSR-0006",
+    "claim_id":"CLM-0006",
+    "searched_on":"2026-09-16",
+    "scope":"Current guideline and systematic-review evidence on ADHD diagnosis, rating scales, clinician judgment and multi-informant assessment.",
+    "source_ids":["SRC-0006","SRC-0020","SRC-0021"],
+    "result":"no_material_conflict_found",
+    "summary":"Newer diagnostic-tool evidence supports rating scales as useful aids while reinforcing that valid ADHD diagnosis requires experienced clinical judgment and broader multi-informant, multi-setting assessment.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"The boundary is not that rating scales are useless; it is that one scale/app/isolated complaint is insufficient."
+  },
+  {
+    "search_id":"CSR-0007",
+    "claim_id":"CLM-0007",
+    "searched_on":"2026-09-16",
+    "scope":"Dedicated current-guideline and meta-analytic supersession search for OCD/ERP beyond the older NICE CG31 source.",
+    "source_ids":["SRC-0007","SRC-0011","SRC-0012"],
+    "result":"no_material_conflict_found",
+    "summary":"Newer guideline and pediatric meta-analytic evidence continue to support ERP while adding comparator, age, treatment-format and risk-of-bias nuance.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"This claim was already advanced to contradiction_searched in the primary claim registry."
+  },
+  {
+    "search_id":"CSR-0008",
+    "claim_id":"CLM-0008",
+    "searched_on":"2026-09-16",
+    "scope":"Cross-guideline current-evidence check for PTSD/acute-stress treatment literacy using VA/DoD 2023 and APA 2025 guidance.",
+    "source_ids":["SRC-0008","SRC-0022"],
+    "result":"no_material_conflict_found",
+    "summary":"Current VA/DoD and APA guidance both support an evidence-based PTSD treatment framework while explicitly preserving individualized history, preferences and professional judgment rather than converting guidelines into an automatic treatment selector.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"Supports Atlas AI prohibition on individualized treatment selection."
+  },
+  {
+    "search_id":"CSR-0009",
+    "claim_id":"CLM-0009",
+    "searched_on":"2026-09-16",
+    "scope":"Current CDC public guidance and active VA/DoD post-acute mTBI guideline evidence on cognitive symptoms, variability and prognosis boundaries.",
+    "source_ids":["SRC-0009","SRC-0023"],
+    "result":"no_material_conflict_found",
+    "summary":"Current sources support cognitive symptoms and substantial individual variability after mild TBI/concussion while preserving the boundary against individualized prognosis, clearance or rehabilitation decisions from educational material.",
+    "recommended_claim_action":"retain_bounded_claim",
+    "human_full_text_review_pending":true,
+    "notes":"Persistent or urgent symptoms require appropriate clinical evaluation; the card is educational."
+  }
+]
