@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/provenance-event.schema.json",
+  "title": "HOSI Atlas Provenance Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provenance_event_id",
+    "atlas_id",
+    "event_type",
+    "actor_type",
+    "occurred_at",
+    "object_type",
+    "object_id",
+    "description"
+  ],
+  "properties": {
+    "provenance_event_id": {"type": "string", "pattern": "^PROV-[A-Za-z0-9_-]{8,64}$"},
+    "atlas_id": {"type": "string", "pattern": "^ATL-[A-Za-z0-9_-]{8,64}$"},
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "created",
+        "edited",
+        "visibility_changed",
+        "consent_granted",
+        "consent_withdrawn",
+        "ai_summary_generated",
+        "ai_summary_accepted",
+        "ai_summary_rejected",
+        "export_requested",
+        "export_completed",
+        "deletion_requested",
+        "deletion_completed",
+        "shared",
+        "unshared",
+        "corroboration_added",
+        "correction_added",
+        "relationship_added",
+        "relationship_removed"
+      ]
+    },
+    "actor_type": {"type": "string", "enum": ["author", "authorized_human", "hosi_system", "ai_system"]},
+    "actor_id": {"type": ["string", "null"], "maxLength": 128},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "object_type": {"type": "string", "enum": ["atlas", "entry", "consent", "ai_summary", "edge", "export", "deletion"]},
+    "object_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "description": {"type": "string", "minLength": 3, "maxLength": 5000},
+    "previous_version_hash": {"type": ["string", "null"], "maxLength": 256},
+    "new_version_hash": {"type": ["string", "null"], "maxLength": 256},
+    "consent_record_id": {"type": ["string", "null"], "pattern": "^CON-[A-Za-z0-9_-]{8,64}$"}
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/knowledge-graph-edge.schema.json",
+  "title": "HOSI Atlas Knowledge Graph Edge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "edge_id",
+    "atlas_id",
+    "source_node_id",
+    "target_node_id",
+    "relationship_type",
+    "provenance_type",
+    "status",
+    "created_at",
+    "provenance_event_id"
+  ],
+  "properties": {
+    "edge_id": {"type": "string", "pattern": "^EDGE-[A-Za-z0-9_-]{8,64}$"},
+    "atlas_id": {"type": "string", "pattern": "^ATL-[A-Za-z0-9_-]{8,64}$"},
+    "source_node_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "target_node_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "relationship_type": {
+      "type": "string",
+      "enum": ["related_to", "occurred_before", "occurred_after", "supports_goal", "informed_by", "reflects_on", "contrasts_with", "learned_from", "user_defined"]
+    },
+    "provenance_type": {"type": "string", "enum": ["user_created", "imported", "ai_suggested"]},
+    "status": {"type": "string", "enum": ["active", "user_review_required", "rejected", "superseded"]},
+    "label": {"type": ["string", "null"], "maxLength": 500},
+    "uncertainty_note": {"type": ["string", "null"], "maxLength": 2000},
+    "created_at": {"type": "string", "format": "date-time"},
+    "reviewed_at": {"type": ["string", "null"], "format": "date-time"},
+    "provenance_event_id": {"type": "string", "pattern": "^PROV-[A-Za-z0-9_-]{8,64}$"}
+  }
+}

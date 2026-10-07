@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schema/consent-record.schema.json",
+  "title": "HOSI Atlas Consent Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "consent_id",
+    "atlas_id",
+    "author_id",
+    "purpose",
+    "scope",
+    "status",
+    "granted_at",
+    "version",
+    "plain_language_notice",
+    "provenance_event_id"
+  ],
+  "properties": {
+    "consent_id": {"type": "string", "pattern": "^CON-[A-Za-z0-9_-]{8,64}$"},
+    "atlas_id": {"type": "string", "pattern": "^ATL-[A-Za-z0-9_-]{8,64}$"},
+    "author_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "purpose": {
+      "type": "string",
+      "enum": ["atlas_storage", "ai_summary", "personalization", "sharing", "research_use", "public_display", "analytics"]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["all_entries", "entry_ids", "data_categories"],
+      "properties": {
+        "all_entries": {"type": "boolean"},
+        "entry_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ENT-[A-Za-z0-9_-]{8,64}$"}},
+        "data_categories": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["ordinary_reflection", "health", "diagnosis", "trauma", "treatment", "faith", "relationships", "identity", "education", "work", "projects", "goals", "values", "other_sensitive"]
+          }
+        }
+      }
+    },
+    "status": {"type": "string", "enum": ["granted", "withdrawn", "expired", "superseded"]},
+    "granted_at": {"type": "string", "format": "date-time"},
+    "withdrawn_at": {"type": ["string", "null"], "format": "date-time"},
+    "expires_at": {"type": ["string", "null"], "format": "date-time"},
+    "version": {"type": "string", "minLength": 1, "maxLength": 32},
+    "plain_language_notice": {"type": "string", "minLength": 20, "maxLength": 5000},
+    "provenance_event_id": {"type": "string", "pattern": "^PROV-[A-Za-z0-9_-]{8,64}$"}
+  }
+}
