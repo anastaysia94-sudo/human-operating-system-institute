@@ -1,0 +1,42 @@
+name: HOSI Research Library QA
+
+on:
+  pull_request:
+    paths:
+      - 'research/library/**'
+      - 'scripts/validate_research_library.py'
+      - 'scripts/validate_research_contradiction_searches.py'
+      - '.github/workflows/research-library-qa.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'research/library/**'
+      - 'scripts/validate_research_library.py'
+      - 'scripts/validate_research_contradiction_searches.py'
+      - '.github/workflows/research-library-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-research-library:
+    name: Validate evidence records and provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run deterministic core research library QA
+        run: python scripts/validate_research_library.py
+
+      - name: Run contradiction-search and supplemental-source QA
+        run: python scripts/validate_research_contradiction_searches.py
