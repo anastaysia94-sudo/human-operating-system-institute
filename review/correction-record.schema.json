@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hosi.example/schemas/correction-record.schema.json",
+  "title": "HOSI Correction Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["correction_id","artifact","version_ref","opened_on","severity","status","problem","required_change","source_or_evidence","opened_by"],
+  "properties": {
+    "correction_id": {"type":"string","pattern":"^COR-[0-9]{4}$"},
+    "artifact": {"type":"string","minLength":1},
+    "version_ref": {"type":"string","minLength":1},
+    "opened_on": {"type":"string","format":"date"},
+    "severity": {"type":"string","enum":["critical","major","moderate","minor"]},
+    "status": {"type":"string","enum":["open","in_progress","resolved_pending_review","closed","wont_fix_with_rationale"]},
+    "problem": {"type":"string","minLength":1},
+    "required_change": {"type":"string","minLength":1},
+    "source_or_evidence": {"type":"array","items":{"type":"string"}},
+    "opened_by": {"type":"string","minLength":1},
+    "resolved_on": {"type":["string","null"],"format":"date"},
+    "resolution_ref": {"type":["string","null"]},
+    "review_event_id": {"type":["string","null"]},
+    "notes": {"type":["string","null"]}
+  }
+}
